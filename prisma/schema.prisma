@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model estudiante {
+  primer_nombre      String @db.VarChar(100)
+  primer_apellido    String @db.VarChar(100)
+  edad               Int
+  pais_origen        String @db.VarChar(50)
+  carrera            String @db.VarChar(100)
+  es_moroso          String @db.VarChar(50)
+  deuda_ciclo_actual Int
+  id                 Int    @id @default(autoincrement())
+}
+
+model facultad {
+  id            Int    @id @default(autoincrement())
+  nombre        String @db.VarChar(100)
+  nombre_decano String @db.VarChar(100)
+  abreviacion   String @db.VarChar(100)
+}
+
+model materia {
+  id                         Int      @id @default(autoincrement())
+  nombre                     String   @db.VarChar(200)
+  codigo                     String   @db.VarChar(10)
+  profesor                   String   @db.VarChar(200)
+  iniciales_profesor         String   @db.VarChar(4)
+  creditos                   Int
+  carrera                    String   @db.VarChar(100)
+  profesor_id                Int
+  profesor_materiaToprofesor profesor @relation(fields: [profesor_id], references: [id])
+}
+
+model profesor {
+  id       Int       @id @default(autoincrement())
+  nombre   String    @db.VarChar(100)
+  apellido String    @db.VarChar(100)
+  materia  materia[]
+}

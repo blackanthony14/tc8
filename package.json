@@ -1,0 +1,22 @@
+{
+  "name": "trabajo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node slc/index.js",
+    "dev": "nodemon slc/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "json": "^11.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "prisma": "^4.0.0"
+  }
+}
